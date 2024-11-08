@@ -1,0 +1,35 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p id="p-tag">Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core and @Model.MyProperty</a>.</p>
+</div>
+
+<button hx-get="/api/htmx" hx-trigger="click" hx-swap="innerHTML" hx-target="#p-tag">
+    Get Html with htmx
+</button>
+
+<button id="btnGetHtml">
+    Get Html with jquery
+</button>
+
+@section Scripts {
+    <script>
+
+        alert('Hi Satya')
+
+        $('#btnGetHtml').click(function () {
+            $.get('/api/jquery', function (results, status) {
+                $('#p-tag').html(results)
+            });
+        });
+
+
+
+        
+    </script>
+}
